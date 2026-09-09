@@ -1,0 +1,161 @@
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/unbounded";
+@import "@fontsource-variable/caveat";
+@import "tailwindcss";
+
+:root {
+  --candy: #ff5f8f;
+  --candy-2: #ff8fb1;
+  --rose: #ffd6e5;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Manrope Variable", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Unbounded Variable", sans-serif;
+}
+
+.font-hand {
+  font-family: "Caveat Variable", cursive;
+}
+
+/* ---- Floating particle animation ---- */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.hearts-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp linear infinite;
+  user-select: none;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.pop-in {
+  animation: popIn 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.wiggle {
+  animation: wiggle 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 40px -10px rgba(255, 95, 143, 0.7); }
+  50% { transform: scale(1.04); box-shadow: 0 16px 60px -8px rgba(255, 95, 143, 0.95); }
+}
+.pulse-soft {
+  animation: pulseSoft 2.4s ease-in-out infinite;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.bounce-in {
+  animation: bounceIn 0.9s cubic-bezier(0.2, 1, 0.3, 1) both;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0.6; }
+}
+.confetti-piece {
+  position: fixed;
+  top: -5vh;
+  animation: confettiFall linear forwards;
+  z-index: 40;
+  pointer-events: none;
+}
+
+@keyframes shimmerText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-shimmer {
+  background-size: 200% auto;
+  animation: shimmerText 4s linear infinite;
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-bob {
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.25); }
+  40% { transform: scale(0.95); }
+  60% { transform: scale(1.18); }
+}
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
